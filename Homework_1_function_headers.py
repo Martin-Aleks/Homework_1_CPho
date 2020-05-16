@@ -27,6 +27,25 @@ def guided_modes_1DTE(prm, k0, h):
     guided : 2d-array
         Field distributions of the guided eigenmodes
     """
+    #####################################################
+    # Trying to build the Matrix in slide 5
+    # Tested with simple numbers and works fine. Can provide test code.
+    
+    M = np.zeros((300, 300))
+    for i in range(M[0][:].size):
+        if i == 0: # boundary
+            M[i][i] = -2/(h**2)+k0**2*prm[i]
+            M[i][i+1] = 1/(h**2)
+        elif i>0 and i<299:
+            M[i][i] = -2/(h**2)+k0**2*prm[i]   # central diagonal
+            M[i][i+1] = 1/(h**2)
+            M[i][i-1] = 1/(h**2)
+        elif i == 299:
+            M[i][i] = -2/(h**2)+k0**2*prm[i]
+            M[i][i-1] = 1/(h**2)
+    
+    
+    
     pass
 
 
