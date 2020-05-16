@@ -53,3 +53,8 @@ def guided_modes_2D(prm, k0, h, numb):
         Field distributions of the guided eigenmodes
     """
     pass
+
+
+
+
+
