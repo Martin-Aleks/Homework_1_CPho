@@ -1,6 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
-from seminar_03 import guided_modes_1DTE
+from seminar_03 import guided_modes_1DTE,epsilon_gauss
 
 
 plt.close('all')
