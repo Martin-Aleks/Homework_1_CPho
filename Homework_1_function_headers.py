@@ -93,7 +93,7 @@ def guided_modes_1DTE(prm, k0, h):
     N=np.size(prm)
     M = np.zeros([N,N],prm.dtype)
 
-    for i in range(M.size):
+    for i in range(N):
         if i == 0: 
             # boundary
             M[i][i] = -2/(h**2)+k0**2*prm[i]
