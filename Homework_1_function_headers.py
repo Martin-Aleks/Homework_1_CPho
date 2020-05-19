@@ -6,6 +6,64 @@ import scipy.sparse as sps
 from scipy.sparse.linalg import eigs
 
 
+def epsilon_gauss(eps_size, h , eps_sub, Delta_eps, W):
+    """Computes the permittivity profile ε(x,ω)=ε_sub+Δε*exp[-(x/W)^2]
+       All dimensions are in µm.
+    
+    Parameters
+    ----------
+    eps_size : 1d-array with 1 or 2 integers 
+    
+        Number of sampling points along x (or x and y) direction 
+        
+    h : float
+    
+        Spatial discretization
+    
+    eps_sub : float
+        
+        permittivity of the substrate
+        
+    Delta_eps : float
+        
+        a parameter of the Gaussian waveguide profile
+        
+    W : float
+        
+        a parameter of the Gaussian waveguide profile
+    
+    
+    Returns
+    -------
+    D : defined by the argument size
+    
+        permittivity profile
+    
+        
+        
+    """
+    D = np.zeros(eps_size)
+    
+    
+    if np.size(eps_size) == 1  :
+        x = h*(np.linspace(1,eps_size,eps_size)-round(eps_size/2))
+        D = eps_sub+Delta_eps*np.exp(-(x/W)**2)
+        # computes only for x direction
+    
+    elif np.size(eps_size) == 2:
+        x = h*(np.linspace(1,eps_size[0],eps_size[0])-round(eps_size[0]/2))
+        y = h*(np.linspace(1,eps_size[1],eps_size[1])-round(eps_size[1]/2))
+        X, Y = np.meshgrid(x,y)
+        R2 = X**2+Y**2
+        D = eps_sub+Delta_eps*np.exp(-R2/W**2)
+        #computes for x-y plane
+    else:
+        raise ValueError('Invalid input: '
+                         'the size of the profile is not a 1d or 2d array')
+    
+    return D
+
+
 def guided_modes_1DTE(prm, k0, h):
     """Computes the effective permittivity of a TE polarized guided eigenmode.
     All dimensions are in µm.
