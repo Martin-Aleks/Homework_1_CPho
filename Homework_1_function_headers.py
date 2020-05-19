@@ -109,11 +109,13 @@ def guided_modes_1DTE(prm, k0, h):
             
     in_put = 1/(k0**2)*M # multiplication according to the formula
     eigval, eigvev = LA.eig(in_put) # now getting the eigenvalues (eff eps) and eigenvectors (fields)
-    print(eigval)
-    print(eigvec)
+    #print(eigval)
+    #print(eigvec)
     # now need to select fields that satisfy the conditions 
+    eigval_eff=eigval[(eps_sub<eigval)&(eigval<max(prm))]
+    eigvec_eff=eigvec[(eps_sub<eigval)&(eigval<max(prm))][:]                               
+    return eigval_eff, eigvec_eff
     
-    pass
 
 
 def guided_modes_2D(prm, k0, h, numb):
