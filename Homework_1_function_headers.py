@@ -90,20 +90,24 @@ def guided_modes_1DTE(prm, k0, h):
     # Trying to build the Matrix in slide 5
     # Tested with simple numbers and works fine. Can provide test code.
     
-    M = np.zeros_like(prm,complex)
-    for i in range(M[0][:].size):
-        if i == 0: # boundary
+    N=np.size(prm)
+    M = np.zeros([N,N],prm.dtype)
+
+    for i in range(M.size):
+        if i == 0: 
+            # boundary
             M[i][i] = -2/(h**2)+k0**2*prm[i]
             M[i][i+1] = 1/(h**2)
-        elif i>0 and i< np.size(M)-1:
-            M[i][i] = -2/(h**2)+k0**2*prm[i]   # central diagonal
+        elif i>0 and i< (N-1):
+            M[i][i] = -2/(h**2)+k0**2*prm[i]  
+            # central diagonal
             M[i][i+1] = 1/(h**2)
             M[i][i-1] = 1/(h**2)
-        elif i == np.size(M)-1:
+        elif i == N-1:
             M[i][i] = -2/(h**2)+k0**2*prm[i]
             M[i][i-1] = 1/(h**2)
             
-    in_put = 1/(k0^2)*M # multiplication according to the formula
+    in_put = 1/(k0**2)*M # multiplication according to the formula
     eigval, eigvev = LA.eig(in_put) # now getting the eigenvalues (eff eps) and eigenvectors (fields)
     print(eigval)
     print(eigvec)
