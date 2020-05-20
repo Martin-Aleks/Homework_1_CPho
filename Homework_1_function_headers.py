@@ -113,7 +113,7 @@ def guided_modes_1DTE(prm, k0, h):
     #print(eigvec)
     # now need to select fields that satisfy the conditions 
     eigval_eff=eigval[(min(prm)<eigval)&(eigval<max(prm))]
-    eigvec_eff=eigvec[(min(prm)<eigval)&(eigval<max(prm))][:]                               
+    eigvec_eff=eigvec[:][(min(prm)<eigval)&(eigval<max(prm))]                              
     return eigval_eff, eigvec_eff
     
 
