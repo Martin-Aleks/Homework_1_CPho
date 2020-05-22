@@ -150,6 +150,8 @@ def guided_modes_2D(prm, k0, h, numb):
     data = (arr2, arr1, arr0, arr1, arr2)
     M = sps.diags(data, [-N, -1, 0, 1, N])
     # This makes a matrix with 5 diagonals
+    # Now finishing the expression before eigensolver
+    M/(k0**2)/(h**2)
     pass
 
 
