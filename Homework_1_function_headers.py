@@ -140,6 +140,16 @@ def guided_modes_2D(prm, k0, h, numb):
     guided : 3d-array
         Field distributions of the guided eigenmodes
     """
+    
+    # Building the big matrix for N^2 by N^2 for an N by N grid of points
+    arr0 = np.ones(N**2)*(-4)
+    arr1 = np.ones((N**2)-1)
+    arr2 = np.ones(N*(N-1))
+    for i in range(0, (N-1)): 
+        arr1[(N-1)+(i*N)]=0
+    data = (arr2, arr1, arr0, arr1, arr2)
+    M = sps.diags(data, [-N, -1, 0, 1, N])
+    # This makes a matrix with 5 diagonals
     pass
 
 
