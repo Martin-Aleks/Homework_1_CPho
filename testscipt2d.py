@@ -6,9 +6,9 @@ import time
 
 plt.close('all')
 
-grid_size     = [100,100]     # please choose appropriate value
+grid_size     = [300,300]     # please choose appropriate value
 number_points = 100*100     # please choose appropriate value
-h             = 0.005   # please choose appropriate value
+h             = 0.05   # please choose appropriate value
 lam           = 0.78
 k0            = 2*np.pi/lam
 e_substrate   = 1.5**2
@@ -36,7 +36,7 @@ X, Y = np.meshgrid(x,y)
 # plt.show()
 
 #plot and save 2D images
-for i in range(0,numb):
+for i in range(0,eigval2.size):
     fig2=plt.figure()
     plt.imshow(abs(eigvec2[i,:,:]),extent=[x[-1], x[0], y[-1], y[0]])  # if we want to normalize the fields: /np.max(abs(eigvec2[i,:,:]))
     cbar=plt.colorbar()
@@ -44,5 +44,5 @@ for i in range(0,numb):
     plt.ylabel('y/$\mu m$')
     plt.title('eigenvalue = {0}'.format(eigval2[i]))
     plt.show()
-    fig2.savefig('100_0.05_order{0}.png'.format(i),dpi=720) #save the image
+    #fig2.savefig('100_0.05_order{0}.png'.format(i),dpi=720) #save the image
 
