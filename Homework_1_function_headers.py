@@ -51,8 +51,8 @@ def epsilon_gauss(eps_size, h , eps_sub, Delta_eps, W):
         # computes only for x direction
     
     elif np.size(eps_size) == 2:
-        x = h*(np.linspace(1,eps_size[0],eps_size[0])-round(eps_size[0]/2))
-        y = h*(np.linspace(1,eps_size[1],eps_size[1])-round(eps_size[1]/2))
+        y = h*(np.linspace(1,eps_size[0],eps_size[0])-round(eps_size[0]/2))
+        x = h*(np.linspace(1,eps_size[1],eps_size[1])-round(eps_size[1]/2))
         X, Y = np.meshgrid(x,y)
         R2 = X**2+Y**2
         D = eps_sub+Delta_eps*np.exp(-R2/W**2)
