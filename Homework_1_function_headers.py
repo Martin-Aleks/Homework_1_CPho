@@ -143,6 +143,7 @@ def guided_modes_2D(prm, k0, h, numb):
     
     # Building the big matrix for N^2 by N^2 for an N by N grid of points
     arr0 = np.ones(N**2)*(-4)
+    arr0 = arr0 + prm # adds epsilon to the main diagonal
     arr1 = np.ones((N**2)-1)
     arr2 = np.ones(N*(N-1))
     for i in range(0, (N-1)): 
@@ -151,7 +152,10 @@ def guided_modes_2D(prm, k0, h, numb):
     M = sps.diags(data, [-N, -1, 0, 1, N])
     # This makes a matrix with 5 diagonals
     # Now finishing the expression before eigensolver
-    M/(k0**2)/(h**2)
+    M/(k0**2)/(h**2) # Matrix should be what we want now
+    
+    vals, vecs = eigs(M, k=4, sigma = 2.25) # Needs a second look
+    
     pass
 
 
