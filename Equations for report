@@ -1,7 +1,8 @@
 To write equations in a ipython notebook, they need to be in $$ for math mode and 
 Markdown needs to be selected to run the code and display it as text. I tried writing a bit about the problem and the context around
 the task. Perhaps it might be a good idea to write write a copy of the report in latex, because I want to imclude images from the 
-lecture slides and I do not know how to do this in a notebook.
+lecture slides and I do not know how to do this in a notebook. Although, on the other hand, I don't think images are essential to this 
+report as the main idea is to describe the code.
 
 An optical waveguide is a spatially inhomogeneous structure used for guiding light. A slab waveguide consists of substrate, cladding and stratified media slabs, where the stratified media has a higher index of refraction, resulting in total internal reflection. This allows the propagation of light to be restricted within a spatial region. 
 
