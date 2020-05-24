@@ -1,1 +1,24 @@
+To write equations in a ipython notebook, they need to be in $$ for math mode and 
+Markdown needs to be selected to run the code and display it as text.
 
+$$\mathbf{\Delta E}(\mathbf{r},\omega)+\frac{\omega^{2}}{c^{2}}\epsilon(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega) = 0$$
+
+$$\mathbf{E}(\mathbf{r},t)=\mathbf{E}_0(x,y)exp(i\beta z - i\omega t)$$
+
+$$\mathbf{E}_0(x) = \begin{pmatrix}0\\E_0\\0 \end{pmatrix}$$
+
+$$\frac{1}{k_0^2}\frac{\partial^2E_0(x, \omega)}{\partial x^2}+\epsilon(x, \omega)E_0(x, \omega) = \epsilon_{eff}E_0(x, \omega)$$
+
+$$\epsilon_{eff} = \left(\frac{\beta}{k_0}\right)^2$$
+
+$$\frac{\partial^2f}{\partial x^2}\Bigg|_{x{_j}}\approx \frac{f(x_{j+1})-2f(x_j)+f(x_{j-1})}{h^2}$$
+
+$$\epsilon(x, \omega) = \epsilon_{Substrate} + \Delta\epsilon e^{-(x/W)^2}$$
+
+$$\left[\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right]u(x,y) + \left[k_0^2\epsilon(x, y, \omega) - \beta^2(\omega)\right]u(x,y) = 0$$
+
+$$\left[\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}+k_0^2\epsilon(x, y, \omega)\right]u(x,y) = \beta^2(\omega)u(x,y)$$
+
+$$\frac{\partial^2f}{\partial x^2}\Bigg|_{x{_j},y_k} + \frac{\partial^2f}{\partial y^2}\Bigg|_{x{_j},y_k} \approx \frac{f(x_{j+1},y_k)+f(x_{j-1},y_k)+f(x_{j},y_{k+1})+f(x_{j},y_{k-1})-4f(x_{j},y_{k})}{h^2}$$
+
+$$\epsilon(x,y,\omega) = \epsilon_{substrate} + \Delta\epsilon e^{-\frac{x^2+y^2}{W^2}}$$
