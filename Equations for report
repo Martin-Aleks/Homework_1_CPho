@@ -1,19 +1,38 @@
 To write equations in a ipython notebook, they need to be in $$ for math mode and 
-Markdown needs to be selected to run the code and display it as text.
+Markdown needs to be selected to run the code and display it as text. I tried writing a bit about the problem and the context around
+the task. Perhaps it might be a good idea to write write a copy of the report in latex, because I want to imclude images from the 
+lecture slides and I do not know how to do this in a notebook.
 
+An optical waveguide is a spatially inhomogeneous structure used for guiding light. A slab waveguide consists of substrate, cladding and stratified media slabs, where the stratified media has a higher index of refraction, resulting in total internal reflection. This allows the propagation of light to be restricted within a spatial region. 
+
+Modes refer to the transverse modes of the electromagnetic waves in the waveguide and can be calculated by implementing Finite-Difference methods. 
+
+Python is used as the computation language, the code for which is described here.
+
+Firstly, guided modes are calculated for a 2D system, where there is no y-dependence, z is the propagation direction and the substrate and cladding are assumed to have the same properties. Assuming a weak guiding where the refractive indices of the stratified medium and substrate have a small difference, the Helmholtz equation can be used as seen below:
 $$\mathbf{\Delta E}(\mathbf{r},\omega)+\frac{\omega^{2}}{c^{2}}\epsilon(\mathbf{r},\omega)\mathbf{E}(\mathbf{r},\omega) = 0$$
 
-$$\mathbf{E}(\mathbf{r},t)=\mathbf{E}_0(x,y)exp(i\beta z - i\omega t)$$
+An ansatz for the fields is assumed as:
+$$\mathbf{E}(\mathbf{r},t)= \mathbf{E}_0(x,y)exp(i\beta z - i\omega t)$$
 
-$$\mathbf{E}_0(x) = \begin{pmatrix}0\\E_0\\0 \end{pmatrix}$$
+and TE polarisation is considered.
+$${E}_0(x) = \begin{pmatrix}0\\E_0\\0 \end{pmatrix}$$
 
+These considerations lead to the following expression:
 $$\frac{1}{k_0^2}\frac{\partial^2E_0(x, \omega)}{\partial x^2}+\epsilon(x, \omega)E_0(x, \omega) = \epsilon_{eff}E_0(x, \omega)$$
+with $\epsilon_{eff} = \left(\frac{\beta}{k_0}\right)^2$
 
-$$\epsilon_{eff} = \left(\frac{\beta}{k_0}\right)^2$$
+This shows that the effective permittivity and fields can be calculated by solving the eigenvalue equation, with the consideration that the field equals zero at the boundaries of the stratified medium.
 
-$$\frac{\partial^2f}{\partial x^2}\Bigg|_{x{_j}}\approx \frac{f(x_{j+1})-2f(x_j)+f(x_{j-1})}{h^2}$$
-
+A Gaussian waveguide profile is assumed, described by the following equation:
 $$\epsilon(x, \omega) = \epsilon_{Substrate} + \Delta\epsilon e^{-(x/W)^2}$$
+
+To discretize the second order derivative, the following approximation method is used:
+$$\frac{\partial^2f}{\partial x^2}\Bigg|_{x{_j}}\approx \frac{f(x_{j+1})-2f(x_j)+f(x_{j-1})}{h^2}$$
+where the field at a point $x_{j}$ and its two neighbouring points $x_{j+1}$ and $x_{j-1}$ is taken and divided by the square of the distance between two points. 
+
+The mode operator can be written as a matrix with three diagonals and an eigenvalue solver can be used to calculate the effective permittivity which is the eigenvalue and the fields contained in the eigenvector.
+
 
 $$\left[\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right]u(x,y) + \left[k_0^2\epsilon(x, y, \omega) - \beta^2(\omega)\right]u(x,y) = 0$$
 
