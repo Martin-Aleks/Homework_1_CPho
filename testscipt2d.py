@@ -38,7 +38,7 @@ X, Y = np.meshgrid(x,y)
 #plot and save 2D images
 for i in range(0,eigval2.size):
     fig2=plt.figure()
-    plt.imshow(abs(eigvec2[i,:,:]),extent=[x[-1], x[0], y[-1], y[0]])  # if we want to normalize the fields: /np.max(abs(eigvec2[i,:,:]))
+    plt.imshow(np.real(eigvec2[i,:,:]),extent=[x[-1], x[0], y[-1], y[0]])  # if we want to normalize the fields: /np.max(abs(eigvec2[i,:,:]))
     cbar=plt.colorbar()
     plt.xlabel('x/$\mu m$')
     plt.ylabel('y/$\mu m$')
