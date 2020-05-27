@@ -1,7 +1,9 @@
 import numpy as np
 import time
 from matplotlib import pyplot as plt
-from seminar_03 import guided_modes_1DTE,epsilon_gauss
+import sys
+sys.path.append('...')
+from headers_homework1 import guided_modes_1DTE,epsilon_gauss
 
 
 plt.close('all')
