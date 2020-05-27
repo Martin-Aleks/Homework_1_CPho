@@ -1,7 +1,9 @@
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 from matplotlib import pyplot as plt
-from seminar_03 import guided_modes_2D
+import sys
+sys.path.append('...')
+from headers_homework1 import epsilon_gauss, guided_modes_2D
 import time
 
 plt.close('all')
